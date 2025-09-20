@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* background-color: #f8f8f8; */
+            background: linear-gradient(to right, #4A90E2, #D4145A);
+            
+        }
+        .upload-container {
+            width: 350px;
+            padding: 20px;
+            border: 2px solid black;
+            text-align: center;
+            background-color: white;
+        }
+        .drop-area {
+            width: 100%;
+            height: 100px;
+            border: 2px dashed black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            cursor: pointer;
+            position: relative;
+        }
+        .drop-area img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        button {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            background-color:rgb(137, 45, 134);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .password-button {
+            width: 45%;
+            padding: 10px; /* Bigger size */
+            margin: 10px 0;
+            border: none;
+            background: linear-gradient(to right, #4A90E2, #D4145A);
+            /* background-color:black; Different color */
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function openDrive() {
+            window.open('https://drive.google.com/drive/my-drive', '_blank');
+        }
+
+        function openDevice() {
+            document.getElementById('fileInput').click();
+        }
+
+        function displayFile(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgElement = document.getElementById('preview');
+                    imgElement.src = e.target.result;
+                    imgElement.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+        function displayFile(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById("file-name").innerText = "Selected File: " + file.name;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgElement = document.getElementById('preview');
+                    imgElement.src = e.target.result;
+                    imgElement.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function openPasswordPage() {
+            window.location.href = 'password.html';
+        }
+    </script>
+    <script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get("success") === "1") {
+                alert("✅ File uploaded and encrypted successfully!");
+                const fileId = params.get("file_id");
+            if (fileId) {
+                setTimeout(() => {
+                    window.location.href = `/download/${fileId}`;
+                }, 1000); // 1 second delay for user to see alert
+            }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="upload-container">
+        <h2>Drop Your Document !!</h2>
+    
+        <!-- <form method="POST" action="{{ url_for('upload') }}"enctype="multipart/form-data">
+        <div class="drop-area"onclick="document.getElementById('fileInput').click();">
+            ⬇️
+            <input type="file" name="file" id="fileInput" style="display: none;" onchange="displayFile(event)">
+        <p id="file-name">No file selected</p>
+        </div>
+        <button onclick="openDrive()">Choose From Drive</button>
+        <button onclick="openDevice()">Choose From Device</button>
+        <button class="password-button" onclick="openPasswordPage()">Next</button> <!-- Updated button -->
+    <!-- </form> --> 
+    <!-- <form method="POST" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="file" required>
+        <input type="password" name="password" placeholder="Enter password" required>
+        <button type="submit">Upload</button>
+    </form> -->
+
+    <body>
+        <h2>Upload and Encrypt Your File</h2>
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            <label for="file">Choose file:</label>
+            <input type="file" id="file" name="file" required><br><br>
+    
+            <label for="password">Enter password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+    
+            <button type="submit">Upload</button>
+        </form>
+    </body>
+    
+    </div>
+    <script>
+        function displayFile(event) {
+            const input = event.target;
+            const fileName = input.files[0]?.name || 'No file selected';
+            document.getElementById('file-name').textContent = fileName;
+        }
+    </script>
+</body>
+</html>

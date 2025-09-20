@@ -1,0 +1,23 @@
+con.env 
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment files
+*.env
+*.env.*
+!example.env
+
+# Backup files
+*.backup
+
+# Uploads / encrypted files (user data should not go to git)
+uploads/
+encrypted/
+
+# Virtual environments
+venv/
+env/
+
+# VS Code
+.vscode/

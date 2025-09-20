@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - File Master</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+        .register-container {
+            width: 300px;
+            padding: 20px;
+            border: 2px solid black;
+            text-align: center;
+            background-color: white;
+        }
+        h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px black;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid black;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h1>Register</h1>
+
+            <form method="POST" action="{{ url_for('register') }}">
+            <label>Email Address</label>
+            <input type="email" name="email" required>
+            <label>Username</label>
+            <input type="text" name="username" required>
+            <label>Password</label>
+            <input type="password" name="password" required>
+            <button type="submit" class="submit-btn">Submit!!</button>
+            
+        </form>
+    </div>
+</body>
+</html>

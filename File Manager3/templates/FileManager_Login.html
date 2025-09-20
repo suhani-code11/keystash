@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Master Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .login-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px gray;
+            text-align: center;
+        }
+        .login-container input {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            width: 80%;
+        }
+        .login-container button {
+            padding: 10px 20px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .register-link {
+            margin-top: 10px;
+        }
+        .register-link a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+     <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            if (username == "admin" && password == "admin") {
+                window.location.href = "admin.html";
+            } else {
+                
+                window.location.href = "FileManager_UploadFile.html";
+            }
+            }
+        
+    </script>
+    <script src="/static/main.js"></script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>FILE MASTER</h2>
+        <form method="POST" action="{{ url_for('login') }}">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+        
+        <!--<input type="text" id = "username"  placeholder="Username">
+        <input type="password" id = "password"  placeholder="Password">
+        <button onclick="login()">Login</button>
+        <body>
+            <!-- Flash message section -->
+          
+            <!-- Your existing login card below -->
+            <div class="card">
+              <!-- Your full login form content here -->
+            </div>
+          </body>
+          
+  
+        <div class="register-link">
+            <p>Doesn't have an account? <a href="{{ url_for('register') }}">Register</a>
+        </div>
+    </div>
+</body>
+</html>
