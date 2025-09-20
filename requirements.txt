@@ -6,3 +6,4 @@ cryptography
 sqlalchemy
 flask-login
 flask-wtf
+flask-pymongo
