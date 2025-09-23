@@ -1,5 +1,4 @@
 Flask
-psycopg2-binary
 python-dotenv
 gunicorn
 cryptography
@@ -7,5 +6,4 @@ sqlalchemy
 flask-login
 flask-wtf
 flask-pymongo
-uuid
 bcrypt
