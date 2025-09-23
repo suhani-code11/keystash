@@ -7,6 +7,5 @@ sqlalchemy
 flask-login
 flask-wtf
 flask-pymongo
-hashlib
 uuid
 bcrypt
