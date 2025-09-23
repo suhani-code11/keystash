@@ -7,3 +7,7 @@ sqlalchemy
 flask-login
 flask-wtf
 flask-pymongo
+base64
+hashlib
+uuid
+bcrypt
